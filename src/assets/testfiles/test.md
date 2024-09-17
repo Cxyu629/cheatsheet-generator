@@ -25,7 +25,7 @@ Normal order reduction
 
 Recursive is a process that builds up a chain of deferred operations.
 
-Iterative is a process that does not "grow" or "shrink", i.e. the deferred operations do not increase as problem size increases. 
+Iterative is a process that does not "grow" or "shrink", i.e. the deferred operations do not increase as problem size increases.
 
 The `$\sum$` function below is an example of a recursive process.
 
@@ -44,3 +44,43 @@ Forms of declarations
 - Function names of function declarations
 
 Scoping rule: a name refers to its _closest surrounding_ declaration
+
+## Features of this generator
+
+The basic things work: here's some _italics_, some **strong, bold text**, ~~please don't read this~~.
+
+Numbered and unnumbered lists
+
+- work
+- I
+- guess?
+
+1. Yep,
+2. I
+3. think
+4. they
+5. do.
+
+### Here's a heading 3
+
+#### How does a heading 4 look like?
+
+What about... a table?
+
+| this | is    |
+| ---- | ----- |
+| a    | table |
+
+We can do `inline code`, and
+
+```
+code blocks too!!
+```
+
+You can write `$ latex $` inline using `` `$ ... $` ``, and
+
+```latex
+\sum^n_{k = 1} k
+```
+
+using ` ```latex <newline> ... <newline> ``` `

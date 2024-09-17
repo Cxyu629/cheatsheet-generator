@@ -25,6 +25,12 @@
   span[aria-hidden="true"] {
     display: none;
   }
+  table, th, td {
+    @apply border border-collapse
+  }
+  th, td {
+    @apply p-1
+  }
 }
 
 :root {
