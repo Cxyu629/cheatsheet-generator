@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { Accessor, createSignal, onMount, Setter } from "solid-js";
 import { Portal } from "solid-js/web";
 import { setDataFromMdFile } from "./data";
+import InfoIcon from "./assets/info_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
 
 type MenuProps = {
   rect: Accessor<{ height: number; width: number }>;
@@ -37,7 +38,7 @@ function Menu(props: MenuProps) {
           onPointerLeave={() => setShowInfo(false)}
           onClick={() => setShowMenu((prev) => !prev)}
         >
-          <img src="/src/assets/info_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"></img>
+          <img src={InfoIcon}></img>
         </div>
         <div
           class={clsx(
