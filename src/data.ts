@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import showdown from "showdown";
 import DOMPurify from "isomorphic-dompurify";
+import katex from "katex";
 
 type SectionData = {
   title: string;
@@ -41,10 +42,30 @@ function parseDom(dom: HTMLElement) {
 }
 
 function setDataFromMdFile(fileContents: string) {
+  showdown.setOption("strikethrough", true);
+  showdown.setOption("tables", true);
   const converter = new showdown.Converter();
 
   const html = DOMPurify.sanitize(converter.makeHtml(fileContents));
   const htmlDOM = new DOMParser().parseFromString(html, "text/html").body;
+
+  let latexBlock;
+  while ((latexBlock = htmlDOM.querySelector("pre>code.latex")) !== null) {
+    let text;
+    if ((text = latexBlock.textContent) !== null) {
+      katex.render(text, latexBlock.parentElement!, { displayMode: true });
+    }
+  }
+
+  htmlDOM.querySelectorAll("code").forEach((element) => {
+    if (
+      element.innerText.length > 2 &&
+      element.innerText.startsWith("$") &&
+      element.innerText.endsWith("$")
+    ) {
+      katex.render(element.innerText.slice(1, -1), element);
+    }
+  });
 
   setData([...parseDom(htmlDOM)]);
 }
