@@ -31,7 +31,7 @@ function Menu(props: MenuProps) {
       <div class="fixed top-0 left-0 h-full w-1/4">
         <div
           class={clsx(
-            "absolute select-none top-2 left-2 backdrop-blur-lg bg-amber-50 bg-opacity-100 active:bg-opacity-50 drop-shadow-lg rounded-full h-16 w-16 transition-opacity flex p-2",
+            "absolute select-none top-2 left-2 backdrop-blur-lg bg-amber-50 bg-opacity-100 active:bg-opacity-50 drop-shadow-lg rounded-full h-16 w-16 transition-all flex p-2",
             showMenu() ? "opacity-100" : "opacity-0 hover:opacity-100"
           )}
           onPointerEnter={() => setShowInfo(true)}
@@ -42,8 +42,8 @@ function Menu(props: MenuProps) {
         </div>
         <div
           class={clsx(
-            "absolute top-2 left-20 backdrop-blur-lg bg-amber-50 bg-opacity-100 transition-opacity drop-shadow-lg rounded-2xl h-16 p-3 grid place-items-center",
-            showInfo() && !showMenu() ? "opacity-100" : "opacity-0 invisible"
+            "absolute top-2 left-20 backdrop-blur-lg bg-amber-50 bg-opacity-100 transition-all drop-shadow-lg rounded-2xl h-16 p-3 grid place-items-center",
+            showInfo() && !showMenu() ? "opacity-100" : "opacity-0 hidden"
           )}
         >
           <p class="text-wrap">
@@ -54,7 +54,7 @@ function Menu(props: MenuProps) {
         <div
           class={clsx(
             "absolute top-2 left-20 backdrop-blur-lg bg-amber-50 bg-opacity-100 transition-all shadow-2xl rounded-2xl p-3 flex flex-col",
-            showMenu() ? "opacity-100 h-min" : "opacity-0 invisible"
+            showMenu() ? "opacity-100 h-min" : "opacity-0 hidden"
           )}
         >
           <p>

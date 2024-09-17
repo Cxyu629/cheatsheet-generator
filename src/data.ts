@@ -29,7 +29,7 @@ function parseDom(dom: HTMLElement) {
       nextHeaderIndex > 0 ? nextHeaderIndex + 1 : children.length
     );
     sectioned_doms.push({
-      title: (sectioned_dom[0] as HTMLElement).outerHTML,
+      title: (sectioned_dom[0] as HTMLElement).innerHTML,
       content: sectioned_dom
         .slice(1)
         .map((node) => (node as HTMLElement).outerHTML)
