@@ -30,8 +30,16 @@ Iterative is a process that does not "grow" or "shrink", i.e. the deferred opera
 The `$\sum$` function below is an example of a recursive process.
 
 ```latex
-\text{Hi} \\
-\sum^n_{k = 1} \frac{1}{k}
+\begin{aligned}
+\text{Hi} &\approx hello \\
+\sum^n_{k = 1} \frac{1}{k} &= \text{harmonic sum or smth}
+\end{aligned}
+```
+```latex
+\begin{aligned}
+   a&=b+c \\
+   d+e&=f
+\end{aligned}
 ```
 
 ## Scope
@@ -77,7 +85,7 @@ We can do `inline code`, and
 code blocks too!!
 ```
 
-You can write `$ latex $` inline using `` `$ ... $` ``, and
+You can write `$ latex $` inline using `` `$ ... $` ``, and a block
 
 ```latex
 \sum^n_{k = 1} k

@@ -53,7 +53,11 @@ function setDataFromMdFile(fileContents: string) {
   while ((latexBlock = htmlDOM.querySelector("pre>code.latex")) !== null) {
     let text;
     if ((text = latexBlock.textContent) !== null) {
+      console.log(text);
+      let iframe = document.createElement("iframe");
       katex.render(text, latexBlock.parentElement!, { displayMode: true });
+      latexBlock.innerHTML = iframe.outerHTML;
+      console.log(iframe.outerHTML);
     }
   }
 
@@ -63,14 +67,16 @@ function setDataFromMdFile(fileContents: string) {
       element.innerText.startsWith("$") &&
       element.innerText.endsWith("$")
     ) {
-      katex.render(element.innerText.slice(1, -1), element);
+      let iframe = document.createElement("iframe");
+      katex.render(element.innerText.slice(1, -1), iframe);
+      element.innerHTML = iframe.outerHTML;
     }
   });
 
   setData([...parseDom(htmlDOM)]);
 }
 
-import mockData from "./assets/testfiles/lorem_ipsum.md?raw";
+import mockData from "./assets/testfiles/test.md?raw";
 
 setDataFromMdFile(mockData);
 
