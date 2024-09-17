@@ -56,7 +56,7 @@ function PrintDisplay(props: PrintDisplayProps) {
   return (
     <Index each={breaks()}>
       {(breakAt, breakIndex) => (
-        <div class="h-auto w-full outline-dashed aspect-[297/210] flex flex-col flex-wrap">
+        <div class="h-auto w-full aspect-[297/210] flex flex-col flex-wrap">
           <Index
             each={data().slice(
               breakAt(),
