@@ -31,7 +31,7 @@ function Menu(props: MenuProps) {
 
   return (
     <Portal>
-      <div class="fixed top-0 left-0 h-max w-1/4">
+      <div class="menu fixed top-0 left-0 h-max w-1/4">
         <div
           class={clsx(
             "absolute select-none top-2 left-2 backdrop-blur-lg bg-amber-50 bg-opacity-100 active:bg-opacity-50 drop-shadow-lg rounded-full h-16 w-16 transition-all flex p-2",

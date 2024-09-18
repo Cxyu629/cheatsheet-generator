@@ -11,6 +11,7 @@ type PrintDisplayProps = {
 };
 
 function PrintDisplay(props: PrintDisplayProps) {
+  const sectionWidth = () => Math.floor(props.rect().width / props.numCols());
   const [flip, setFlip] = createSignal<boolean>(false);
   const [breaks, setBreaks] = createSignal<number[]>([0]);
 
@@ -21,9 +22,7 @@ function PrintDisplay(props: PrintDisplayProps) {
   const recalculate = () => {
     let temp_breaks = [0];
     const maxWidth = () => props.rect().width;
-    let xs = unwrap(refs).map(
-      (val) => val.offsetLeft + Math.floor(props.rect().width / props.numCols())
-    );
+    let xs = unwrap(refs).map((val) => val.offsetLeft + sectionWidth());
     let currRemoved = 0;
     while (xs.length !== 0) {
       const oneBreak = xs.findIndex((val) => val > maxWidth());
@@ -69,9 +68,7 @@ function PrintDisplay(props: PrintDisplayProps) {
               <div
                 ref={(el) => setRefs([index + breakAt()], el)}
                 class={clsx("p-4")}
-                style={`width: ${Math.floor(
-                  props.rect().width / props.numCols()
-                )}px;`}
+                style={`width: ${sectionWidth()}px;`}
               >
                 {breakIndex === 0 && index === 0 ? (
                   <TitleCard {...item()} />

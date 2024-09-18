@@ -52,6 +52,17 @@ div {
   transition-behavior: allow-discrete;
 }
 
+@media print {
+  .menu {
+    display: none;
+  }
+}
+
+@page {
+  margin: 0;
+  size: landscape;
+}
+
 /*
 a {
   font-weight: 500;
