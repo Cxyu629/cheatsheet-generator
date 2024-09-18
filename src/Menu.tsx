@@ -3,6 +3,8 @@ import { Accessor, createSignal, onMount, Setter } from "solid-js";
 import { Portal } from "solid-js/web";
 import { setDataFromMdFile } from "./data";
 import InfoIcon from "./assets/info_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
+import lorem_ipsum_md from "./assets/testfiles/lorem_ipsum.md?raw";
+import test_md from "./assets/testfiles/test.md?raw";
 
 type MenuProps = {
   rect: Accessor<{ height: number; width: number }>;
@@ -16,6 +18,7 @@ function Menu(props: MenuProps) {
   const [showMenu, setShowMenu] = createSignal<boolean>(true);
 
   onMount(() => {
+    setDataFromMdFile(test_md);
     fileInput.addEventListener("change", () => {
       if (fileInput.files !== null && fileInput.files.length === 1) {
         const file = fileInput.files[0];
@@ -78,6 +81,50 @@ function Menu(props: MenuProps) {
             <label>Your cheatsheet file: </label>
             <input ref={fileInput!} type="file" accept=".md" />
           </span>
+          <span>Or select a demo file: </span>
+          <span>
+            <input
+              onChange={(e) =>
+                e.currentTarget.checked && setDataFromMdFile(lorem_ipsum_md)
+              }
+              type="radio"
+              name="demo"
+              value="lorem_ipsum.md"
+            />{" "}
+            <label>
+              lorem_ipsum.md (
+              <a
+                class="underline text-blue-600 hover:text-blue-500 active:text-blue-700"
+                href={lorem_ipsum_md}
+                download="lorem_ipsum.md"
+              >
+                download
+              </a>
+              )
+            </label>
+          </span>
+          <span>
+            <input
+              onChange={(e) =>
+                e.currentTarget.checked && setDataFromMdFile(test_md)
+              }
+              type="radio"
+              name="demo"
+              checked
+              value="test.md"
+            />{" "}
+            <label>
+              test.md (
+              <a
+                class="underline text-blue-600 hover:text-blue-500 active:text-blue-700"
+                href={test_md}
+                download="test.md"
+              >
+                download
+              </a>
+              )
+            </label>
+          </span>
           <br />
           <div>
             <p class="text-2xl pb-1">Tutorial(?)</p>
@@ -91,7 +138,7 @@ function Menu(props: MenuProps) {
             <p>
               Sections are separated by heading 1 and heading 2 lines.{" "}
               <code>Codeblocks</code> and <code>inline code</code> should work,{" "}
-              <em>italics</em>, <b>bolding</b>, and <u>underline</u> ought to
+              <em>italics</em>, <strong>bolding</strong>, and <del>strikethrough</del> ought to
               work.
             </p>
             <p class="text-lg pt-3 pb-1">Step 2: Upload that .md file</p>

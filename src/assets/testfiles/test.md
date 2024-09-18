@@ -35,6 +35,7 @@ The `$\sum$` function below is an example of a recursive process.
 \sum^n_{k = 1} \frac{1}{k} &= \text{harmonic sum or smth}
 \end{aligned}
 ```
+
 ```latex
 \begin{aligned}
    a&=b+c \\
@@ -92,3 +93,17 @@ You can write `$ latex $` inline using `` `$ ... $` ``, and a block
 ```
 
 using ` ```latex <newline> ... <newline> ``` `
+
+## 3.3 Linear Combinations
+
+### Definition
+
+Let `$\textbf{u}_1, \textbf{u}_2, \dots , \textbf{u}_k$` be vectors in `$\mathbb{R}^n$`. A _linear combination_ of the vectors `$\textbf{u}_1, \textbf{u}_2, \dots , \textbf{u}_k$` is
+
+```latex
+c_1\textbf{u}_1 + c_2\textbf{u}_2 + \dots + c_k \textbf{u}_k
+```
+
+for some `$c_1, c_2, \dots, c_k \in \mathbb{R}$`. The scalars `$c_1, c_2, \dots, c_k$` are called _coefficients_.
+
+Think of `$\textbf{u}_1, \textbf{u}_2, \dots , \textbf{u}_k$` as the directions, and `$c_1, c_2, \dots, c_k$` as the amount of units to walk in the respective directions.

@@ -57,7 +57,10 @@ function setDataFromMdFile(fileContents: string) {
   ) {
     let text;
     if ((text = latexBlock.textContent) !== null) {
-      katex.render(text, latexBlock, { displayMode: true });
+      katex.render(text, latexBlock, {
+        displayMode: true,
+        throwOnError: false,
+      });
       latexBlock.replaceWith(latexBlock.firstChild!);
     }
   }
@@ -68,16 +71,14 @@ function setDataFromMdFile(fileContents: string) {
       element.innerText.startsWith("$") &&
       element.innerText.endsWith("$")
     ) {
-      katex.render(element.innerText.slice(1, -1), element);
+      katex.render(element.innerText.slice(1, -1), element, {
+        throwOnError: false,
+      });
       element.replaceWith(element.firstChild!);
     }
   });
 
   setData([...parseDom(htmlDOM)]);
 }
-
-import mockData from "./assets/testfiles/test.md?raw";
-
-setDataFromMdFile(mockData);
 
 export { data, setDataFromMdFile };
