@@ -22,9 +22,6 @@
   h6 {
     @apply pt-3 pb-1;
   }
-  span[aria-hidden="true"] {
-    display: none;
-  }
   table, th, td {
     @apply border border-collapse
   }

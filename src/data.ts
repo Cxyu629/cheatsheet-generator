@@ -49,15 +49,16 @@ function setDataFromMdFile(fileContents: string) {
   const html = DOMPurify.sanitize(converter.makeHtml(fileContents));
   const htmlDOM = new DOMParser().parseFromString(html, "text/html").body;
 
-  let latexBlock;
-  while ((latexBlock = htmlDOM.querySelector("pre>code.latex")) !== null) {
+  let latexBlock: HTMLElement;
+  while (
+    (latexBlock = htmlDOM.querySelector(
+      "pre:has(>code.latex)"
+    ) as HTMLElement) !== null
+  ) {
     let text;
     if ((text = latexBlock.textContent) !== null) {
-      console.log(text);
-      let iframe = document.createElement("iframe");
-      katex.render(text, latexBlock.parentElement!, { displayMode: true });
-      latexBlock.innerHTML = iframe.outerHTML;
-      console.log(iframe.outerHTML);
+      katex.render(text, latexBlock, { displayMode: true });
+      latexBlock.replaceWith(latexBlock.firstChild!);
     }
   }
 
@@ -67,9 +68,8 @@ function setDataFromMdFile(fileContents: string) {
       element.innerText.startsWith("$") &&
       element.innerText.endsWith("$")
     ) {
-      let iframe = document.createElement("iframe");
-      katex.render(element.innerText.slice(1, -1), iframe);
-      element.innerHTML = iframe.outerHTML;
+      katex.render(element.innerText.slice(1, -1), element);
+      element.replaceWith(element.firstChild!);
     }
   });
 
